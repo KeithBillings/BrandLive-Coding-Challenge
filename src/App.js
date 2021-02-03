@@ -1,17 +1,34 @@
-import { useState } from 'react';
-// import ArticleCard from './components/ArticleCard/ArticleCard';
+import { useState, useEffect } from 'react';
+
+// Bootstrap
+import Button from 'react-bootstrap/Button';
+
+// Local Components
 import CategoryList from './components/CategoryList/CategoryList';
 
-// styles
+// Styles
 import './App.scss';
 
 function App() {
-  // const [articleData, setArticalData] = useState();
+  const [viewTab, setViewTab] = useState('home');
+
+  // useEffect(()=>{
+
+  // })
+
+  function handleButtonClick() {
+    setViewTab('categories');
+  }
 
   return (
     <div className='App'>
       <h1> BrandLive Coding Challenge </h1>
-      <CategoryList />
+      {viewTab === 'home' ? (
+        <Button onClick={handleButtonClick}>View Categories</Button>
+      ) : (
+        ''
+      )}
+      {viewTab === 'categories' ? <CategoryList setViewTab={setViewTab} /> : ''}
     </div>
   );
 }
