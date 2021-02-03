@@ -6,6 +6,7 @@ import './CategoryList.styles.scss';
 
 function CategoryList(props) {
   const [categories, setCategories] = useState([]);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   useEffect(() => {
     axios
@@ -14,22 +15,43 @@ function CategoryList(props) {
       )
       .then((response) => {
         setCategories(response.data.response.results);
-        // console.log('category list data is: ', categories);
+        setFilteredCategories(response.data.response.results);
       });
   }, []);
 
+  function filterCategories() {
+    const userSearchTerm = document
+      .getElementById('category-search-bar')
+      .value.toLowerCase();
+
+    let filteredCategories = categories.filter((category) => {
+      return category.webTitle.toLowerCase().includes(userSearchTerm);
+    });
+
+    setFilteredCategories(filteredCategories);
+  }
+
+  useEffect(() => {
+    filterCategories();
+  });
+
   return (
-    <div className='category-list'>
-      {categories.map((category, index) => {
-        return (
-          <CategoryCard
-            key={index}
-            title={category.webTitle}
-            url={category.webUrl}
-          />
-        );
-      })}
-    </div>
+    <>
+      <h2>Categories</h2>
+      <input id='category-search-bar' placeholder='Search Categories'></input>
+      <p>Click on a category box to open in a new window.</p>
+      <div className='category-list'>
+        {filteredCategories.map((category, index) => {
+          return (
+            <CategoryCard
+              key={index}
+              title={category.webTitle}
+              url={category.webUrl}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }
 
