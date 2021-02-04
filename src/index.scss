@@ -1,12 +1,16 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url('./images/email-pattern.png');
-  background-attachment: fixed;
+  background: linear-gradient(
+      90deg,
+      #5ae3ff -1.53%,
+      #a7ff7b 28.91%,
+      #fffd62 64.18%,
+      #ff6ae6 100%
+    ),
+    #5ae3ff;
 }
 
 code {

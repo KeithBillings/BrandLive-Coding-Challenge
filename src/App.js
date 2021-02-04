@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 
 // Local Components
 import CategoryList from './components/CategoryList/CategoryList';
+import Header from './components/Header/Header';
 
 // Styles
 import './App.scss';
@@ -12,17 +13,13 @@ import './App.scss';
 function App() {
   const [viewTab, setViewTab] = useState('home');
 
-  // useEffect(()=>{
-
-  // })
-
   function handleButtonClick() {
     setViewTab('categories');
   }
 
   return (
     <div className='App'>
-      <h1> BrandLive Coding Challenge </h1>
+      <Header />
       {viewTab === 'home' ? (
         <Button onClick={handleButtonClick}>View Categories</Button>
       ) : (

@@ -1,7 +1,9 @@
 .category-list {
   display: grid;
   margin: 3rem;
+  padding: 1rem;
   grid-template-columns: repeat(4, 1fr);
   gap: 25px;
   grid-auto-rows: minmax(100px, auto);
+  background: black;
 }
