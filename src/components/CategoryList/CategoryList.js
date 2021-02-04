@@ -18,7 +18,6 @@ function CategoryList(props) {
     const userSearchTerm = document
       .getElementById('category-search-bar')
       .value.toLowerCase();
-
     let filteredCategories = categories.filter((category) => {
       return category.webTitle.toLowerCase().includes(userSearchTerm);
     });
@@ -26,8 +25,8 @@ function CategoryList(props) {
     setFilteredCategories(filteredCategories);
   }
 
-  function handleButtonClick(){
-    props.setViewTab('home')
+  function handleButtonClick() {
+    props.setViewTab('home');
   }
 
   useEffect(() => {
@@ -41,14 +40,14 @@ function CategoryList(props) {
       });
   }, []);
 
-  useEffect(() => {
-    filterCategories();
-  });
-
   return (
     <>
       <h2>Categories</h2>
-      <input id='category-search-bar' placeholder='Search Categories'></input>
+      <input
+        id='category-search-bar'
+        placeholder='Search Categories'
+        onChange={filterCategories}
+      ></input>
       <p>Click on a category box to open in a new window.</p>
       <Button onClick={handleButtonClick}>Home</Button>
       <div className='category-list'>
