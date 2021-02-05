@@ -13,7 +13,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Run the app in http://localhost:3000/ with the command `yarn start`
 
 ## Deployment 
-https://github.com/KeithBillings/BrandLive-Coding-Challenge
+https://keithbillings.com/BrandLive-Coding-Challenge/
 
 #
 ## Available Scripts
