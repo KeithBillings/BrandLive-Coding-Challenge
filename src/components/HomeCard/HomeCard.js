@@ -1,3 +1,4 @@
+// local component
 import { Card } from 'react-bootstrap';
 
 function HomeCard({ title, url, date }) {
@@ -7,7 +8,8 @@ function HomeCard({ title, url, date }) {
 
   return (
     <Card onClick={handleOnClick}>
-      <Card.Header as='h3'>{title}</Card.Header>
+      <p>Date: {date.substring(0, date.length - 1).replace('T', ' Time: ')} </p>
+      <Card.Header as='h2'>{title}</Card.Header>
     </Card>
   );
 }

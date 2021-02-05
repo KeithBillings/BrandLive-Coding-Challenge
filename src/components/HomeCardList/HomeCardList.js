@@ -7,6 +7,9 @@ import { Row, Col } from 'react-bootstrap';
 // Local Components
 import HomeCard from '../HomeCard/HomeCard';
 
+// Styles
+import './HomeCardList.styles.scss';
+
 function HomeCardList() {
   const [newsResults, setNewsResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -17,7 +20,8 @@ function HomeCardList() {
       .value.toLowerCase();
     setSearchTerm(userSearchTerm);
     fetchNews().then((res) => {
-      setNewsResults(res.data.response.results);
+      let news = res.data.response.results;
+      setNewsResults(news.slice(0, 9));
     });
   }
 
@@ -28,9 +32,7 @@ function HomeCardList() {
   }
 
   useEffect(() => {
-    fetchNews().then((response) => {
-      setNewsResults(response.data.response.results);
-    });
+    handleSearch();
   }, []);
 
   return (
@@ -43,16 +45,18 @@ function HomeCardList() {
         ></input>
       </Col>
       <Col>
-        {newsResults.map((news, index) => {
-          return (
-            <HomeCard
-              key={index}
-              title={news.webTitle}
-              url={news.webUrl}
-              date={news.webPublicationDate}
-            />
-          );
-        })}
+        <div className='home-card-list'>
+          {newsResults.map((news, index) => {
+            return (
+              <HomeCard
+                key={index}
+                title={news.webTitle}
+                url={news.webUrl}
+                date={news.webPublicationDate}
+              />
+            );
+          })}
+        </div>
       </Col>
     </Row>
   );

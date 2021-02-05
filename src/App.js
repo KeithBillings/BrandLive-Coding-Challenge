@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Bootstrap
 import { Container, Row, Col, Button } from 'react-bootstrap';
 
 // Local Components
 import Header from './components/Header/Header';
-import HomeCardList from './components/HomeCardList/HomeCardList'
+import HomeCardList from './components/HomeCardList/HomeCardList';
 import CategoryList from './components/CategoryList/CategoryList';
 
 // Data
@@ -42,7 +42,7 @@ function App() {
               <Col>{homeText}</Col>
             </Row>
             <Row style={{ marginTop: '1rem' }}>
-              <HomeCardList/>
+              <HomeCardList />
             </Row>
           </>
         ) : null}
