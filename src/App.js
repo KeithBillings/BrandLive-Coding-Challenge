@@ -9,6 +9,7 @@ import Categories from './pages/Categories';
 
 // Local Components
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 
 // Styles
 import './App.scss';
@@ -29,6 +30,7 @@ function App() {
           </Switch>
         </Container>
       </Router>
+      <Footer />
     </div>
   );
 }

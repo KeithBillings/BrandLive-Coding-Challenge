@@ -1,0 +1,23 @@
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: #111111;
+  text-decoration: none;
+  margin-top: 3rem;
+}
+
+.openSans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.social {
+  padding-left: 0;
+  & > li {
+    display: inline-block;
+    margin: 0 5px;
+  }
+}
+
+.whiteText {
+  color: lightgray;
+}
