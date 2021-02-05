@@ -10,3 +10,9 @@
     cursor: pointer;
   }
 }
+
+// overriding bootstrap css
+.card-header {
+  background: none !important;
+  border: none !important;
+}

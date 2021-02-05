@@ -41,21 +41,22 @@ function HomeCardList() {
   }, []);
 
   return (
-    <Row>
-      <Col>
+    <Col>
+      <Row>
         <input
           id='home-search-bar'
-          placeholder='Search'
+          placeholder='Search For News Articles'
           onChange={handleSearch}
           defaultValue=''
         ></input>
-      </Col>
-      <Col>
+      </Row>
+      <Row>
         <div className='home-card-list'>
           {newsResults.map((news, index) => {
             return (
               <HomeCard
                 key={index}
+                index={index}
                 title={news.webTitle}
                 url={news.webUrl}
                 date={news.webPublicationDate}
@@ -65,8 +66,8 @@ function HomeCardList() {
             );
           })}
         </div>
-      </Col>
-    </Row>
+      </Row>
+    </Col>
   );
 }
 

@@ -18,7 +18,7 @@ function App() {
     <div className='App'>
       <Router>
         <Header />
-        <Container className='homeBody'>
+        <Container id='mainBody'>
           <Switch>
             <Route path='/categories'>
               <Categories />

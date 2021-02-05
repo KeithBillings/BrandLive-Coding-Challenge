@@ -16,9 +16,11 @@ function Home() {
         <Col>
           <h2>Home</h2>
         </Col>
+      </Row>
+      <Row>
         <Col>
           <Link to='/categories'>
-            <Button>View Categories</Button>
+            <Button variant='light'>View Categories</Button>
           </Link>
         </Col>
       </Row>

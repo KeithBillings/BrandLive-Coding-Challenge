@@ -1,8 +1,12 @@
 .home-card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   gap: 25px;
   margin: 3rem;
   padding: 1rem;
   border-radius: 10px;
+}
+
+#home-search-bar {
+  margin: auto;
 }

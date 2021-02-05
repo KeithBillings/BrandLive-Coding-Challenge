@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 // Bootstrap
-import Button from 'react-bootstrap/Button';
+import { Button, Row, Col } from 'react-bootstrap';
 
 // Local Components
 import CategoryCard from '../CategoryCard/CategoryCard';
@@ -40,26 +40,35 @@ function CategoryList(props) {
   return (
     <>
       <h2>Categories</h2>
-      <input
-        id='category-search-bar'
-        placeholder='Search Categories'
-        onChange={filterCategories}
-      ></input>
-      <p>Click on a category box to open in a new window.</p>
       <Link to='/'>
-        <Button>Home</Button>
+        <Button variant='light'>Home</Button>
       </Link>
-      <div className='category-list'>
-        {filteredCategories.map((category, index) => {
-          return (
-            <CategoryCard
-              key={index}
-              title={category.webTitle}
-              url={category.webUrl}
-            />
-          );
-        })}
-      </div>
+      <Row>
+        <Col>
+          <input
+            id='category-search-bar'
+            placeholder='Search Categories'
+            onChange={filterCategories}
+          ></input>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <p>Click on a category box to open in a new window.</p>
+
+          <div className='category-list'>
+            {filteredCategories.map((category, index) => {
+              return (
+                <CategoryCard
+                  key={index}
+                  title={category.webTitle}
+                  url={category.webUrl}
+                />
+              );
+            })}
+          </div>
+        </Col>
+      </Row>
     </>
   );
 }
