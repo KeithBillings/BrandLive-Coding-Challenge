@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 // Bootstrap
 import Button from 'react-bootstrap/Button';
@@ -25,10 +26,6 @@ function CategoryList(props) {
     setFilteredCategories(filteredCategories);
   }
 
-  function handleButtonClick() {
-    props.setViewTab('home');
-  }
-
   useEffect(() => {
     axios
       .get(
@@ -49,7 +46,9 @@ function CategoryList(props) {
         onChange={filterCategories}
       ></input>
       <p>Click on a category box to open in a new window.</p>
-      <Button onClick={handleButtonClick}>Home</Button>
+      <Link to='/'>
+        <Button>Home</Button>
+      </Link>
       <div className='category-list'>
         {filteredCategories.map((category, index) => {
           return (
