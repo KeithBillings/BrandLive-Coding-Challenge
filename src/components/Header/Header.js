@@ -7,7 +7,7 @@ function Header() {
         <img src={BrandLiveLogo} alt='brandlivelogo' />
       </a>
       {` `}
-      Coding Challenge, done right.
+      Code Challenge, done right.
     </h1>
   );
 }

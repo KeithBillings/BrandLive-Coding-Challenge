@@ -1,11 +1,15 @@
 import { useState, useEffect } from 'react';
 
 // Bootstrap
-import Button from 'react-bootstrap/Button';
+import { Container, Row, Col, Button } from 'react-bootstrap';
 
 // Local Components
-import CategoryList from './components/CategoryList/CategoryList';
 import Header from './components/Header/Header';
+import HomeCardList from './components/HomeCardList/HomeCardList'
+import CategoryList from './components/CategoryList/CategoryList';
+
+// Data
+import homeText from './data/homeText';
 
 // Styles
 import './App.scss';
@@ -20,12 +24,35 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      {viewTab === 'home' ? (
-        <Button onClick={handleButtonClick}>View Categories</Button>
-      ) : (
-        ''
-      )}
-      {viewTab === 'categories' ? <CategoryList setViewTab={setViewTab} /> : ''}
+      <Container className='homeBody'>
+        {viewTab === 'home' ? (
+          <Row>
+            <Col>
+              <h2>Home</h2>
+            </Col>
+            <Col>
+              <Button onClick={handleButtonClick}>View Categories</Button>
+            </Col>
+          </Row>
+        ) : null}
+
+        {viewTab === 'home' ? (
+          <>
+            <Row style={{ marginTop: '1rem' }}>
+              <Col>{homeText}</Col>
+            </Row>
+            <Row style={{ marginTop: '1rem' }}>
+              <HomeCardList/>
+            </Row>
+          </>
+        ) : null}
+
+        {viewTab === 'categories' ? (
+          <Row>
+            <CategoryList setViewTab={setViewTab} />
+          </Row>
+        ) : null}
+      </Container>
     </div>
   );
 }
