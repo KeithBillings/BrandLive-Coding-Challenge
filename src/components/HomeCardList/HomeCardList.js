@@ -12,27 +12,32 @@ import './HomeCardList.styles.scss';
 
 function HomeCardList() {
   const [newsResults, setNewsResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState('today');
 
   function handleSearch() {
     const userSearchTerm = document
       .getElementById('home-search-bar')
       .value.toLowerCase();
     setSearchTerm(userSearchTerm);
-    fetchNews().then((res) => {
-      let news = res.data.response.results;
-      setNewsResults(news.slice(0, 9));
-    });
+
+    fetchNews();
   }
 
   function fetchNews() {
-    return axios.get(
-      `https://content.guardianapis.com/search?q=${searchTerm}&api-key=a76c1292-798a-431d-bf44-1293eae88032`
-    );
+    axios
+      .get(
+        `https://content.guardianapis.com/search?q=${searchTerm}&api-key=a76c1292-798a-431d-bf44-1293eae88032&show-fields=body,thumbnail`
+      )
+      .then((res) => {
+        console.log('response is: ', res);
+
+        let news = res.data.response.results;
+        setNewsResults(news.slice(0, 9));
+      });
   }
 
   useEffect(() => {
-    handleSearch();
+    fetchNews();
   }, []);
 
   return (
@@ -42,6 +47,7 @@ function HomeCardList() {
           id='home-search-bar'
           placeholder='Search'
           onChange={handleSearch}
+          defaultValue=''
         ></input>
       </Col>
       <Col>
@@ -53,6 +59,8 @@ function HomeCardList() {
                 title={news.webTitle}
                 url={news.webUrl}
                 date={news.webPublicationDate}
+                image={news.fields.thumbnail}
+                body={news.fields.body}
               />
             );
           })}

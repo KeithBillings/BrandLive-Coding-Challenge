@@ -1,10 +1,11 @@
 import BrandLiveLogo from '../../images/BrandLiveLogo.svg';
+import "./Header.styles.scss"
 
 function Header() {
   return (
     <h1>
       <a href='https://www.brandlive.com/'>
-        <img src={BrandLiveLogo} alt='brandlivelogo' />
+        <img id='brandliveLogo' src={BrandLiveLogo} alt='brandlivelogo' />
       </a>
       {` `}
       Code Challenge, done right.
