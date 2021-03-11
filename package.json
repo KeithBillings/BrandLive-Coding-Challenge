@@ -2,7 +2,7 @@
   "name": "brandlive-coding-challenge",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://KeithBillings.github.io/BrandLive-Coding-Challenge",
+  "homepage": "http://KeithBillings.com/BrandLive-Coding-Challenge",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
