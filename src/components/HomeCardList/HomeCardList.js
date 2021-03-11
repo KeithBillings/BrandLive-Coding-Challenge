@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 // Bootstrap
@@ -12,43 +12,34 @@ import './HomeCardList.styles.scss';
 
 function HomeCardList() {
   const [newsResults, setNewsResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('today');
+  const searchBar = useRef(null);
 
-  function handleSearch() {
-    const userSearchTerm = document
-      .getElementById('home-search-bar')
-      .value.toLowerCase();
-    setSearchTerm(userSearchTerm);
-
-    fetchNews();
+  function fetchNews(searchTerm) {
+    axios.get(`https://content.guardianapis.com/search?q=${searchTerm}&api-key=a76c1292-798a-431d-bf44-1293eae88032&show-fields=body,thumbnail`).then((res) => {
+      let news = res.data.response.results;
+      setNewsResults(news.slice(0, 9));
+    });
   }
 
-  function fetchNews() {
-    axios
-      .get(
-        `https://content.guardianapis.com/search?q=${searchTerm}&api-key=a76c1292-798a-431d-bf44-1293eae88032&show-fields=body,thumbnail`
-      )
-      .then((res) => {
-        console.log('response is: ', res);
+  function handleSearch(e) {
+    const searchTerm = e.target.value;
 
-        let news = res.data.response.results;
-        setNewsResults(news.slice(0, 9));
-      });
+    if (searchTerm === '') {
+      fetchNews('today');
+    } else {
+      fetchNews(searchTerm);
+    }
   }
 
   useEffect(() => {
-    fetchNews();
+    searchBar.current.focus();
+    fetchNews('today');
   }, []);
 
   return (
     <Col>
       <Row>
-        <input
-          id='home-search-bar'
-          placeholder='Search For News Articles'
-          onChange={handleSearch}
-          defaultValue=''
-        ></input>
+        <input type='text' id='home-search-bar' placeholder='Search For News Articles' onChange={handleSearch} ref={searchBar}></input>
       </Row>
       <Row>
         <div className='home-card-list'>
