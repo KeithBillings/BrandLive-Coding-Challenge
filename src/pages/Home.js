@@ -8,8 +8,6 @@ import HomeCardList from '../components/HomeCardList/HomeCardList';
 import homeText from '../data/homeText';
 
 function Home() {
-  // function handleButtonClick() {}
-
   return (
     <>
       <Row>
